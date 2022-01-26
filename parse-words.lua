@@ -1,17 +1,10 @@
 function read_file(path)
-    local file = io.open(path, "rb") -- r read mode and b binary mode
-    if not file then return nil end
-    local content = file:read "*a" -- *a or *all reads the whole file
-    file:close()
-    return content
-end
-
-function string_to_table(input)
-    local list = {}
-    for str in string.gmatch(input, "([^"..'\n'.."]+)") do
-        table.insert(list, str)
+    local result = {}
+    for line in io.lines(path)
+    do 
+        result[#result+1] = line
     end
-    return list
+    return result
 end
 
 function pick_rnd_word(word_table)
