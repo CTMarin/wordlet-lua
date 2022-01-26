@@ -1,19 +1,10 @@
-local colors = {
-    {
-        title = 'Red',
-        color = 'ff0000',
-    },
-    {
-        title = 'Green',
-        color = '00ff00',
-    },
-    {
-        title = 'Dust',
-        color = 'ab9c38',
-    }, -- and many more
+local escape = {
+    ["red"] = "\027[31m",
+    ["green"] = "\027[32m",
+    ["orange"] = "\027[33m",
+    ["strikethrough"] = "\027[9m",
+    ["bold"] = "\027[1m",
 }
-local startLine = '\124'
-local endLine = '\124r'
 
 function read_terminal(list)
     io.write("Input a word of length 5:\n")
@@ -30,7 +21,7 @@ end
 
 function write_terminal(msg)
 
-    print(startLine .. colors[1].color .. msg .. endLine)
+    print(escape["green"] .. msg)
 end
 
 write_terminal("Hola")
