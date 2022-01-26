@@ -9,7 +9,7 @@ local escape = {
     ["bold"] = "\027[1m",
 }
 
-local menu_options = {
+menu_options = {
     ["Play"] = 2,
     ["Exit"] = 1
 }
@@ -40,12 +40,7 @@ end
 
 function main_menu()
     print_banner()
-    local selected = read_option()
-    if selected == menu_options[].value then
-        play_game()
-    else
-        os.exit()
-    end
+    return read_option()
 end
 
 function read_option()
@@ -70,11 +65,3 @@ function print_banner()
     print(banner)
 end
 
-function play_game()
-    while tries >= 0 do
-        local input = read_terminal(worldlet_word_table)
-        print("Tries left: " .. tries .. " ")
-        write_terminal(input)
-        tries = tries-1
-    end
-end
