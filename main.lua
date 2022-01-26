@@ -1,7 +1,8 @@
 require("parse-words")
 require "terminal"
+require 'word'
 
-local worldlet_word_table = read_file("word-list.txt")
+local worldlet_word_table = Read_file("word-list.txt")
 if worldlet_word_table == nil then os.exit(-1) end
 
-print(pick_rnd_word(worldlet_word_table))
+local random_word = Pick_random_word(worldlet_word_table)

@@ -1,4 +1,4 @@
-function read_file(path)
+function Read_file(path)
     local result = {}
     for line in io.lines(path)
     do 
@@ -7,7 +7,7 @@ function read_file(path)
     return result
 end
 
-function pick_rnd_word(word_table)
+function Pick_random_word(word_table)
     local table_size = #word_table
     math.randomseed()
     local selected_word_index = math.random(0, table_size)
