@@ -1,0 +1,5 @@
+{
+    "Lua.diagnostics.globals": [
+        "file_exists"
+    ]
+}
