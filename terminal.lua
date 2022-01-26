@@ -1,6 +1,7 @@
 require "parse-words"
 
 local escape = {
+    ["none"] = "\27[0m",
     ["red"] = "\027[31m",
     ["green"] = "\027[32m",
     ["yellow"] = "\027[33m",
@@ -39,4 +40,4 @@ function main_menu()
     print(escape["red"].."1. "..escape["none"].."Salir")
 end
 
-write_terminal("Hola")
+write_terminal("Bienvenido a")
