@@ -5,6 +5,7 @@
         nil,
         {
             "character": "c",
+            "included": true
             "well_placed": true
         },
         {
@@ -27,11 +28,19 @@ function Matching_characters(guess,correct)
         if index_correct == index_guess then
             temp = {
                 ['character'] = character,
+                included = true,
                 well_placed = true
+            }
+        elseif string.match(correct, character) then
+            temp = {
+                ['character'] = character,
+                included = true,
+                well_placed = false
             }
         elseif index_guess == nil then
             temp = {
                 ['character'] = character,
+                included = false,
                 well_placed = false
             }
         end

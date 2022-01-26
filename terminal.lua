@@ -31,8 +31,10 @@ function write_terminal(msg, matches)
     
     for i=1,#msg do
         local esc = escape["red"]
-        if matches[i] then
+        if matches[i].well_placed then
             esc = escape["green"]
+        elseif matches[i].included then
+            esc = escape["yellow"]
         end
 
         io.write(esc .. msg:sub(i,i) .. " ")
