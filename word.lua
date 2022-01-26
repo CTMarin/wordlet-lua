@@ -1,3 +1,20 @@
+--[[
+    Devuelve un diccionario con la siguiente estructura
+    [
+        {
+            "character": "c",
+            "well_placed": true
+        },
+        {
+            "character": "a",
+            "well_placed": false
+        },
+        {
+            "character": "e",
+            "well_placed": true
+        }
+    ]
+--]]
 function Matching_characters(guess,correct)
     local result = {}
 
