@@ -1,6 +1,8 @@
 --[[
-    Devuelve un diccionario con la siguiente estructura
+    Devuelve un diccionario con la siguiente estructura con cada uno 
+    de los caracteres de la palabra guess
     [
+        nil,
         {
             "character": "c",
             "well_placed": true
@@ -18,22 +20,22 @@
 function Matching_characters(guess,correct)
     local result = {}
 
-    for index_correct = 1,#correct do
-        local character = correct:sub(index_correct,index_correct)
-        local index_guess = string.find(guess,character)
+    for index_guess = 1,#guess do
+        local character = guess:sub(index_guess,index_guess)
+        local index_correct = string.find(correct,character)
+        local temp = nil
         if index_correct == index_guess then
-            local temp = {
+            temp = {
                 ['character'] = character,
                 well_placed = true
             }
-            result[#result+1] = temp
         elseif index_guess == nil then
-            local temp = {
+            temp = {
                 ['character'] = character,
                 well_placed = false
             }
-            result[#result+1] = temp
         end
+        result[index_guess] = temp
     end
     return result
 end
