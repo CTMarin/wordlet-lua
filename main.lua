@@ -1,3 +1,5 @@
+require "terminal"
+
 local function read_file(path)
     local file = io.open(path, "rb") -- r read mode and b binary mode
     if not file then return nil end
