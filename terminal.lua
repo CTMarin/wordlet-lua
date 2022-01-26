@@ -10,14 +10,15 @@ local escape = {
 }
 
 local menu_options = {
-    ["Play"] = 1,
-    ["Exit"] = 2
+    ["Play"] = 2,
+    ["Exit"] = 1
 }
+table.sort(menu_options, function(a, b) return a.value < b.value end)
 
 function read_terminal(list)
     io.write("Input a valid word of length 5:\n")
     io.flush()
-    input = io.read()
+    local input = io.read()
     while (string.len(input) ~= 5) or (not On_list(input, list)) do
         io.write("Input a valid word of length 5:\n")
         io.flush()
@@ -40,15 +41,20 @@ end
 function main_menu()
     print_banner()
     local selected = read_option()
+    if selected == menu_options[].value then
+        play_game()
+    else
+        os.exit()
+    end
 end
 
 function read_option()
-    for k, v in pairs(menu_options) do
-        print(escape["red"]..v..". "..escape["none"]..k)
+    for i=1,#menu_options do
+        print(escape["red"]..menu_options[i].value..". "..escape["none"]..menu_options[i].title)
     end
     io.write("Select an option: ")
     io.flush()
-    local input = io.read()
+    return io.read()
 end
 
 function print_banner()
@@ -62,4 +68,13 @@ function print_banner()
     ]]
     print(escape["yellow"] .. escape["bold"] .. "Bienvenido a..." .. escape["none"])
     print(banner)
+end
+
+function play_game()
+    while tries >= 0 do
+        local input = read_terminal(worldlet_word_table)
+        print("Tries left: " .. tries .. " ")
+        write_terminal(input)
+        tries = tries-1
+    end
 end
