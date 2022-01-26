@@ -9,11 +9,11 @@ local escape = {
     ["bold"] = "\027[1m",
 }
 
-menu_options = {
-    ["Play"] = 2,
-    ["Exit"] = 1
+local menu_options = {
+    ["Play"] = "1",
+    ["Exit"] = "2"
 }
-table.sort(menu_options, function(a, b) return a.value < b.value end)
+table.sort(menu_options, function(a, b) return a < b end)
 
 function read_terminal(list)
     io.write("Input a valid word of length 5:\n")
@@ -24,7 +24,6 @@ function read_terminal(list)
         io.flush()
         input = io.read()
     end
-    
     return input
 end
 
@@ -33,7 +32,6 @@ function write_terminal(msg)
     for i=1,#msg do
         io.write(msg:sub(i,i) .. " ")
     end
-
     print("")
     
 end
@@ -44,8 +42,8 @@ function main_menu()
 end
 
 function read_option()
-    for i=1,#menu_options do
-        print(escape["red"]..menu_options[i].value..". "..escape["none"]..menu_options[i].title)
+    for k, v in pairs(menu_options) do
+        print(escape["red"]..v..". "..escape["none"]..k)
     end
     io.write("Select an option: ")
     io.flush()
