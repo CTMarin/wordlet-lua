@@ -9,6 +9,11 @@ local escape = {
     ["bold"] = "\027[1m",
 }
 
+local menu_options = {
+    ["Play"] = 1,
+    ["Exit"] = 2
+}
+
 function read_terminal(list)
     io.write("Input a valid word of length 5:\n")
     io.flush()
@@ -33,6 +38,20 @@ function write_terminal(msg)
 end
 
 function main_menu()
+    print_banner()
+    local selected = read_option()
+end
+
+function read_option()
+    for k, v in pairs(menu_options) do
+        print(escape["red"]..v..". "..escape["none"]..k)
+    end
+    io.write("Select an option: ")
+    io.flush()
+    local input = io.read()
+end
+
+function print_banner()
     local banner = escape["red"]..[[
 ██╗    ██╗ ██████╗ ██████╗ ██████╗ ██╗     ███████╗████████╗    ██╗     ██╗   ██╗ █████╗ 
 ██║    ██║██╔═══██╗██╔══██╗██╔══██╗██║     ██╔════╝╚══██╔══╝    ██║     ██║   ██║██╔══██╗
@@ -43,6 +62,4 @@ function main_menu()
     ]]
     print(escape["yellow"] .. escape["bold"] .. "Bienvenido a..." .. escape["none"])
     print(banner)
-    print(escape["red"].."1. "..escape["none"].."Jugar")
-    print(escape["red"].."2. "..escape["none"].."Salir")
 end
