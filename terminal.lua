@@ -13,7 +13,6 @@ local menu_options = {
     ["Play"] = "1",
     ["Exit"] = "2"
 }
-table.sort(menu_options, function(a, b) return a < b end)
 
 function read_terminal(list)
     io.write("Input a valid word of length 5:\n")
@@ -39,7 +38,7 @@ end
 function main_menu()
     print_banner()
     local selected = read_option()
-    if selected == menu_options["play"] then
+    if selected == menu_options["Play"] then
         play_game()
     else
         os.exit()
@@ -47,8 +46,8 @@ function main_menu()
 end
 
 function read_option()
-    for k, v in pairs(menu_options) do
-        print(escape["red"]..v..". "..escape["none"]..k)
+    for _, k in ipairs(menu_options) do
+        print(escape["red"]..menu_options[k]..". "..escape["none"]..k)
     end
     io.write("Select an option: ")
     io.flush()
