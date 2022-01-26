@@ -1,6 +1,6 @@
-require("parse-words")
+require "parse-words"
 require "terminal"
-require 'word'
+require "word"
 
 local worldlet_word_table = Read_file("word-list.txt")
 if worldlet_word_table == nil then os.exit(-1) end
