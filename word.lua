@@ -37,7 +37,7 @@ function Matching_characters(guess,correct)
                 included = true,
                 well_placed = false
             }
-        elseif index_guess == nil then
+        else
             temp = {
                 ['character'] = character,
                 included = false,
