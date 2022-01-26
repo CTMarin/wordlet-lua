@@ -19,7 +19,7 @@ local function pick_rnd_word()
     local word_table = string_to_table(fileContent)
     local table_size = #word_table
     
-    math.randomseed(os.time())
+    math.randomseed()
     local selected_word_index = math.random(0, table_size)
     return word_table[selected_word_index]
 end
