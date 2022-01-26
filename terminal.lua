@@ -22,7 +22,7 @@ function read_terminal(list)
 end
 
 function write_terminal(msg)
-    print(escape["orange"] .. escape["bold"] .. msg)
+    print(escape["yellow"] .. escape["bold"] .. msg)
 end
 
 function main_menu()
@@ -35,6 +35,8 @@ function main_menu()
  ╚══╝╚══╝  ╚═════╝ ╚═╝  ╚═╝╚═════╝ ╚══════╝╚══════╝   ╚═╝       ╚══════╝ ╚═════╝ ╚═╝  ╚═╝                                                                              
     ]]
     print(banner)
+    print(escape["red"].."1. "..escape["none"].."Jugar")
+    print(escape["red"].."1. "..escape["none"].."Salir")
 end
 
 write_terminal("Hola")
