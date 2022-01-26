@@ -6,5 +6,17 @@ local function read_file(path)
     return content
 end
 
+local function string_to_table(input)
+    local list = {}
+    for str in string.gmatch(input, "([^"..'\n'.."]+)") do
+        table.insert(list, str)
+        print(str)
+    end
+end
+
+local function pick_rnd_word()
+    local fileContent = read_file("word-list.txt")
+    local word_table = string_to_table(fileContent)
+end
+
 local fileContent = read_file("word-list.txt")
-print (fileContent);
