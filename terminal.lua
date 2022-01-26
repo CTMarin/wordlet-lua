@@ -23,7 +23,13 @@ function read_terminal(list)
 end
 
 function write_terminal(msg)
-    print(escape["yellow"] .. escape["bold"] .. msg)
+    
+    for i=1,#msg do
+        io.write(msg:sub(i,i) .. " ")
+    end
+
+    print("")
+    
 end
 
 function main_menu()
@@ -35,9 +41,8 @@ function main_menu()
 ╚███╔███╔╝╚██████╔╝██║  ██║██████╔╝███████╗███████╗   ██║       ███████╗╚██████╔╝██║  ██║
  ╚══╝╚══╝  ╚═════╝ ╚═╝  ╚═╝╚═════╝ ╚══════╝╚══════╝   ╚═╝       ╚══════╝ ╚═════╝ ╚═╝  ╚═╝                                                                              
     ]]
+    print(escape["yellow"] .. escape["bold"] .. "Bienvenido a..." .. escape["none"])
     print(banner)
     print(escape["red"].."1. "..escape["none"].."Jugar")
-    print(escape["red"].."1. "..escape["none"].."Salir")
+    print(escape["red"].."2. "..escape["none"].."Salir")
 end
-
-write_terminal("Bienvenido a")
