@@ -14,14 +14,14 @@ local function string_to_table(input)
     return list
 end
 
-local function pick_rnd_word()
-    local fileContent = read_file("word-list.txt")
-    local word_table = string_to_table(fileContent)
+local function pick_rnd_word(word_table)
     local table_size = #word_table
-    
     math.randomseed()
     local selected_word_index = math.random(0, table_size)
     return word_table[selected_word_index]
 end
 
-print(pick_rnd_word())
+local wordlet_word_file = read_file("word-list.txt")
+local worldlet_word_table = string_to_table(wordlet_word_file)
+
+print(pick_rnd_word(worldlet_word_table))
