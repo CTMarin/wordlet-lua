@@ -1,7 +1,7 @@
 require "parse-words"
 require "word"
 
-local escape = {
+Escape = {
     ["none"] = "\27[0m",
     ["red"] = "\027[31m",
     ["green"] = "\027[32m",
@@ -28,20 +28,21 @@ function read_terminal(list)
 end
 
 function write_terminal(msg, matches)
-    
+    local guessed = 0
     for i=1,#msg do
-        local esc = escape["red"]
+        local esc = Escape["red"]
         if matches[i].well_placed then
-            esc = escape["green"]
+            esc = Escape["green"]
+            guessed = guessed + 1
         elseif matches[i].included then
-            esc = escape["yellow"]
+            esc = Escape["yellow"]
         end
 
         io.write(esc .. msg:sub(i,i) .. " ")
-        io.write(escape["none"])
+        io.write(Escape["none"])
     end
     print("")
-    
+    return guessed == #msg
 end
 
 function main_menu()
@@ -52,7 +53,7 @@ end
 
 function read_option()
     for k, v in pairs(menu_options) do
-        print(escape["red"]..v..". "..escape["none"]..k)
+        print(Escape["red"]..v..". "..Escape["none"]..k)
     end
     io.write("Select an option: ")
     io.flush()
@@ -60,7 +61,7 @@ function read_option()
 end
 
 function print_banner()
-    local banner = escape["red"]..[[
+    local banner = Escape["red"]..[[
 ██╗    ██╗ ██████╗ ██████╗ ██████╗ ██╗     ███████╗████████╗    ██╗     ██╗   ██╗ █████╗ 
 ██║    ██║██╔═══██╗██╔══██╗██╔══██╗██║     ██╔════╝╚══██╔══╝    ██║     ██║   ██║██╔══██╗
 ██║ █╗ ██║██║   ██║██████╔╝██║  ██║██║     █████╗     ██║       ██║     ██║   ██║███████║
@@ -68,7 +69,7 @@ function print_banner()
 ╚███╔███╔╝╚██████╔╝██║  ██║██████╔╝███████╗███████╗   ██║       ███████╗╚██████╔╝██║  ██║
  ╚══╝╚══╝  ╚═════╝ ╚═╝  ╚═╝╚═════╝ ╚══════╝╚══════╝   ╚═╝       ╚══════╝ ╚═════╝ ╚═╝  ╚═╝                                                                              
     ]]
-    print(escape["yellow"] .. escape["bold"] .. "Bienvenido a..." .. escape["none"])
+    print(Escape["yellow"] .. Escape["bold"] .. "Bienvenido a..." .. Escape["none"])
     print(banner)
 end
 
