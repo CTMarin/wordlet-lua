@@ -13,7 +13,6 @@ local menu_options = {
     ["Play"] = "1",
     ["Exit"] = "2"
 }
-table.sort(menu_options, function(a, b) return a < b end)
 
 function read_terminal(list)
     io.write("Input a valid word of length 5:\n")
@@ -48,7 +47,6 @@ function read_option()
     end
     io.write("Select an option: ")
     io.flush()
-    return io.read()
 end
 
 function print_banner()
