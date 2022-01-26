@@ -1,6 +1,7 @@
 require "parse-words"
 
 local escape = {
+    ["none"] = "\27[0m",
     ["red"] = "\027[31m",
     ["green"] = "\027[32m",
     ["yellow"] = "\027[33m",
@@ -22,7 +23,7 @@ function read_terminal(list)
 end
 
 function write_terminal(msg)
-    print(escape["orange"] .. escape["bold"] .. msg)
+    print(escape["yellow"] .. escape["bold"] .. msg)
 end
 
 function main_menu()
@@ -37,4 +38,4 @@ function main_menu()
     print(banner)
 end
 
-write_terminal("Hola")
+write_terminal("Bienvenido a")
