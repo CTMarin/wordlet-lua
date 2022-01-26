@@ -7,3 +7,4 @@ if worldlet_word_table == nil then os.exit(-1) end
 
 local random_word = Pick_random_word(worldlet_word_table)
 main_menu()
+local random_word = Pick_random_word(worldlet_word_table)
