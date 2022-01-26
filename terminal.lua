@@ -37,21 +37,7 @@ end
 
 function main_menu()
     print_banner()
-    local selected = read_option()
-    if selected == menu_options["Play"] then
-        play_game()
-    else
-        os.exit()
-    end
-end
-
-function read_option()
-    for _, k in ipairs(menu_options) do
-        print(escape["red"]..menu_options[k]..". "..escape["none"]..k)
-    end
-    io.write("Select an option: ")
     io.flush()
-    return io.read()
 end
 
 function print_banner()
@@ -67,11 +53,3 @@ function print_banner()
     print(banner)
 end
 
-function play_game()
-    while tries >= 0 do
-        local input = read_terminal(worldlet_word_table)
-        print("Tries left: " .. tries .. " ")
-        write_terminal(input)
-        tries = tries-1
-    end
-end
