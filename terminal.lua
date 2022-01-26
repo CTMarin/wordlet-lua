@@ -15,15 +15,29 @@ menu_options = {
     ["Exit"] = "2"
 }
 
-function read_terminal(list)
+local function has_value (tab, val)
+    for index, value in ipairs(tab) do
+        if value == val then
+            return true
+        end
+    end
+
+    return false
+end
+
+function read_terminal(list, chosenwords, i)
     io.write("Input a valid word of length 5:\n")
     io.flush()
     local input = io.read()
-    while (string.len(input) ~= 5) or (not On_list(input, list)) do
+    while (string.len(input) ~= 5) or (not On_list(input, list) or (has_value(chosenwords, input))) do
+        if(has_value(chosenwords, input)) then
+            print(Escape["red"] .. "You already tried that word." .. Escape["none"])
+        end
         io.write("Input a valid word of length 5:\n")
         io.flush()
-        input = io.read()
+        input = io.read() 
     end
+    chosenwords[i] = input
     return input
 end
 
