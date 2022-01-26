@@ -23,7 +23,7 @@ function play_game()
             end
 
             if tries == 0 then
-                print(Escape["red"] .. "YOU LOST..." .. Escape["normal"] .. "The correct word was: " .. Escape["yellow"] .. Escape["bold"] .. random_word)
+                print(Escape["red"] .. "YOU LOST..." .. Escape["none"] .. "The correct word was: " .. Escape["yellow"] .. Escape["bold"] .. random_word)
             else
                 print(Escape["green"] .. "Congrats! YOU WON!!")
             end

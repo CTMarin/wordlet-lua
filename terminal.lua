@@ -29,6 +29,7 @@ end
 
 function write_terminal(msg, matches)
     local guessed = 0
+    io.write(Escape["none"])
     for i=1,#msg do
         local esc = Escape["red"]
         if matches[i].well_placed then
