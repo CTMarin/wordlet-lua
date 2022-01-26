@@ -25,9 +25,6 @@ function write_terminal(msg)
     print(escape["orange"] .. escape["bold"] .. msg)
 end
 
-<<<<<<< HEAD
---write_terminal("Hola")
-=======
 function main_menu()
     local banner = escape["red"]..[[
 ██╗    ██╗ ██████╗ ██████╗ ██████╗ ██╗     ███████╗████████╗    ██╗     ██╗   ██╗ █████╗ 
@@ -41,4 +38,3 @@ function main_menu()
 end
 
 write_terminal("Hola")
->>>>>>> e4a3de0a16db82c50f3ed5e51e347c270354a97b
