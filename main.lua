@@ -10,13 +10,18 @@ local function string_to_table(input)
     local list = {}
     for str in string.gmatch(input, "([^"..'\n'.."]+)") do
         table.insert(list, str)
-        print(str)
     end
+    return list
 end
 
 local function pick_rnd_word()
     local fileContent = read_file("word-list.txt")
     local word_table = string_to_table(fileContent)
+    local table_size = #word_table
+    
+    math.randomseed(os.time())
+    local selected_word_index = math.random(0, table_size)
+    return word_table[selected_word_index]
 end
 
-local fileContent = read_file("word-list.txt")
+print(pick_rnd_word())
