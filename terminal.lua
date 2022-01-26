@@ -1,4 +1,5 @@
 require "parse-words"
+require "word"
 
 local escape = {
     ["none"] = "\27[0m",
@@ -9,7 +10,7 @@ local escape = {
     ["bold"] = "\027[1m",
 }
 
-local menu_options = {
+menu_options = {
     ["Play"] = "1",
     ["Exit"] = "2"
 }
@@ -26,10 +27,16 @@ function read_terminal(list)
     return input
 end
 
-function write_terminal(msg)
+function write_terminal(msg, matches)
     
     for i=1,#msg do
-        io.write(msg:sub(i,i) .. " ")
+        local esc = escape["red"]
+        if matches[i] then
+            esc = escape["green"]
+        end
+
+        io.write(esc .. msg:sub(i,i) .. " ")
+        io.write(escape["none"])
     end
     print("")
     
@@ -47,6 +54,7 @@ function read_option()
     end
     io.write("Select an option: ")
     io.flush()
+    return io.read()
 end
 
 function print_banner()
