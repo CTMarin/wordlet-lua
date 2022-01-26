@@ -38,6 +38,7 @@ end
 
 function main_menu()
     print_banner()
+    io.flush()
     return read_option()
 end
 

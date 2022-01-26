@@ -20,6 +20,7 @@ function play_game()
     while tries >= 0 do
         local input = read_terminal(worldlet_word_table)
         print("Tries left: " .. tries .. " ")
+        match
         write_terminal(input)
         tries = tries-1
     end

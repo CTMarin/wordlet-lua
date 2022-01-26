@@ -21,3 +21,19 @@ function On_list(word, list)
     end      
     return false
 end
+
+function match(word1, word2)
+    local matches = {}
+
+    for i=1,5 do
+        if(word1:sub(i,i) == word1:sub(i,i)) then
+            matches[i] = 1
+            else
+                matches[i] = 0
+        end
+    end
+
+    return matches
+
+end
+
