@@ -2,7 +2,7 @@ require "parse-words"
 require "terminal"
 require "word"
 
-local tries = 5
+
 
 local worldlet_word_table = Read_file("word-list.txt")
 if worldlet_word_table == nil then os.exit(-1) end
@@ -14,6 +14,8 @@ function play_game()
         local option = main_menu()
         if option == menu_options["Play"] then
             local guessed = false
+            local tries = 5
+
             while tries >= 0 and not guessed do
                 local input = read_terminal(worldlet_word_table)
                 print(Escape["bold"] .. "Tries left: " .. tries .. " ")
@@ -22,7 +24,7 @@ function play_game()
                 tries = tries-1
             end
 
-            if tries == 0 then
+            if tries == -1 then
                 print(Escape["red"] .. "YOU LOST..." .. Escape["none"] .. "The correct word was: " .. Escape["yellow"] .. Escape["bold"] .. random_word)
             else
                 print(Escape["green"] .. "Congrats! YOU WON!!")

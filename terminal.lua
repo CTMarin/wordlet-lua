@@ -47,9 +47,15 @@ function write_terminal(msg, matches)
 end
 
 function main_menu()
-    print_banner()
-    io.flush()
-    return read_option()
+    local correct = false
+    local input
+    while not correct do
+        print_banner()
+        io.flush()
+        input = read_option()
+        if(input == "1" or input == "2") then correct = true end
+    end
+    return input
 end
 
 function read_option()
