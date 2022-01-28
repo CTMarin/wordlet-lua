@@ -1,7 +1,7 @@
 function Read_file(path)
     local result = {}
-    for line in io.lines(path) do 
-        result[#result+1] = line
+    for line in io.lines(path) do
+        result[#result + 1] = line
     end
     return result
 end
@@ -18,8 +18,7 @@ function On_list(word, list)
         if str == word then
             return true
         end
-    end      
+    end
     return false
 end
-
 

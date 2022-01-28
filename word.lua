@@ -17,13 +17,12 @@
             "well_placed": true
         }
     ]
---]]
-function Matching_characters(guess,correct)
+--]] function Matching_characters(guess, correct)
     local result = {}
 
-    for index_guess = 1,#guess do
-        local character = guess:sub(index_guess,index_guess)
-        local index_correct = string.find(correct,character)
+    for index_guess = 1, #guess do
+        local character = guess:sub(index_guess, index_guess)
+        local index_correct = string.find(correct, character)
         local temp = nil
         if index_correct == index_guess then
             temp = {
