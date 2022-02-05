@@ -1,12 +1,12 @@
 require "parse-words"
-require "terminal"
+require "discordterminal"
 require "word"
 
 
 local worldlet_word_table = Read_file("word-list.txt")
 if worldlet_word_table == nil then os.exit(-1) end
 
-function play_game()
+function play_game_disc(channel)
     while true do
         local option = main_menu()
         if option == menu_options["Play"] then
@@ -17,9 +17,9 @@ function play_game()
 
             while tries > 0 and not guessed do
                 tries = tries-1
-                local input = read_terminal(worldlet_word_table, chosenwords, 5-tries)
+                local input = read_terminal(worldlet_word_table, chosenwords, 5-tries, channel)
                 local matches = Matching_characters(input, random_word)
-                guessed = write_terminal(input, matches)
+                guessed = write_terminal(input, matches, channel)
                 if not guessed then print(Escape["bold"] .. "Tries left: " .. tries .. " " .. Escape["none"]) end
             end
 
@@ -34,4 +34,3 @@ function play_game()
     end
      
 end
-
