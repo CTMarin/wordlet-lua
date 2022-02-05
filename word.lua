@@ -17,8 +17,7 @@
             "well_placed": true
         }
     ]
---]]
-function Matching_characters(guess,correct)
+--]] function Matching_characters(guess, correct)
     local result = {}
     local tempind = 1
 

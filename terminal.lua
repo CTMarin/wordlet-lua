@@ -7,7 +7,7 @@ Escape = {
     ["green"] = "\027[32m",
     ["yellow"] = "\027[33m",
     ["strikethrough"] = "\027[9m",
-    ["bold"] = "\027[1m",
+    ["bold"] = "\027[1m"
 }
 
 menu_options = {
@@ -15,7 +15,7 @@ menu_options = {
     ["Exit"] = "2"
 }
 
-local function has_value (tab, val)
+local function has_value(tab, val)
     for index, value in ipairs(tab) do
         if value == val then
             return true
@@ -30,12 +30,12 @@ function read_terminal(list, chosenwords, i)
     io.flush()
     local input = io.read()
     while (string.len(input) ~= 5) or (not On_list(input, list) or (has_value(chosenwords, input))) do
-        if(has_value(chosenwords, input)) then
+        if (has_value(chosenwords, input)) then
             print(Escape["red"] .. "You already tried that word." .. Escape["none"])
         end
         io.write("Input a valid word of length 5:\n")
         io.flush()
-        input = io.read() 
+        input = io.read()
     end
     chosenwords[i] = input
     return input
@@ -44,7 +44,7 @@ end
 function write_terminal(msg, matches)
     local guessed = 0
     io.write(Escape["none"])
-    for i=1,#msg do
+    for i = 1, #msg do
         local esc = Escape["red"]
         if matches[i].well_placed then
             esc = Escape["green"]
@@ -53,7 +53,7 @@ function write_terminal(msg, matches)
             esc = Escape["yellow"]
         end
 
-        io.write(esc .. msg:sub(i,i) .. " ")
+        io.write(esc .. msg:sub(i, i) .. " ")
         io.write(Escape["none"])
     end
     print("")
@@ -67,14 +67,16 @@ function main_menu()
         print_banner()
         io.flush()
         input = read_option()
-        if(input == "1" or input == "2") then correct = true end
+        if (input == "1" or input == "2") then
+            correct = true
+        end
     end
     return input
 end
 
 function read_option()
     for k, v in pairs(menu_options) do
-        print(Escape["red"]..v..". "..Escape["none"]..k)
+        print(Escape["red"] .. v .. ". " .. Escape["none"] .. k)
     end
     io.write("Select an option: ")
     io.flush()
@@ -82,7 +84,7 @@ function read_option()
 end
 
 function print_banner()
-    local banner = Escape["red"]..[[
+    local banner = Escape["red"] .. [[
 ██╗    ██╗ ██████╗ ██████╗ ██████╗ ██╗     ███████╗████████╗    ██╗     ██╗   ██╗ █████╗ 
 ██║    ██║██╔═══██╗██╔══██╗██╔══██╗██║     ██╔════╝╚══██╔══╝    ██║     ██║   ██║██╔══██╗
 ██║ █╗ ██║██║   ██║██████╔╝██║  ██║██║     █████╗     ██║       ██║     ██║   ██║███████║
